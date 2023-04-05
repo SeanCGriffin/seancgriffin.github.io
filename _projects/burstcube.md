@@ -8,38 +8,42 @@ category: work
 ---
 
 
-<div class="row justify-content-sm-center">
-<div class="col-sm-8 mt-3 mt-md-0">
-    BurstCube is a 6U (30 cm x 20 cm x 10 cm) CubeSat. The instrument comprises four CsI(Tl) scintillator crystals read out with arrays of silicon photomultipliers (SiPMs). 
-    BurstCube's primary sciecne goal is to detect and characterize the electromagnetic counterparts to gravitational waves, namely short gamma-ray bursts (sGRBs).     
+BurstCube is a 6U (30 cm x 20 cm x 10 cm) CubeSat. The instrument comprises four CsI(Tl) scintillator crystals read out with arrays of silicon photomultipliers (SiPMs). 
+BurstCube's primary sciecne goal is to detect and characterize the electromagnetic counterparts to gravitational waves, namely short gamma-ray bursts (sGRBs).     
 
-    In addition to being a member of the BurstCube science team, I am also part of the team that designed and built the instrument. 
-    My main task on BurstCube is to implement the FPGA interface between the instrument and the instrument flight software (iFSW) running on the flight computer.     
+In addition to being a member of the BurstCube science team, I am also part of the team that designed and built the instrument. 
+My main task on BurstCube is to implement the FPGA interface between the instrument and the instrument flight software (iFSW) running on the flight computer.     
 
+<div class="row">
+    <div class="col-sm-4 mt-3 mt-md-0">
     </div>
-
-    <div class="col-sm mt-3 mt-md-0">
-            <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/BurstCube_open.png' | relative_url }}" alt="" title="example image"/>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/BurstCube_open.png' | relative_url }}" alt="" title="BurstCube CAD Image"/>
     </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+    </div>
+</div>
+<div class="caption">
+    CAD image of BurstCube. 
 </div>
 
 
 The BurstCube flight computer is built around the <a href="https://www.spacemicro.com/products/">SpaceMicro CubeSat Space Processor (CSP)</a> which is a space-qualified board built around the Xilinx Zynq SoC platform. 
 The Zynq is a combined dual-core ARM processor with configurable FPGA fabric. 
-BurstCube has two FPGAs (one for the instrument and one for the spacecraft). The first handles data acquisition from the SiPMs and instrument control. 
-The second (which is what I work on) is the Command and Data Handling (C&DH) FPGA, 
-Tis FPGA interface must process data as it arrives from the instrument, binning it into different energy channels and integrating it in time to reduce the overall data volume being sent to ground. 
+BurstCube has uses two FPGAs (technically three if you count the radio).
+The first handles data acquisition from the different detectors and overall instrument control and the generation of housekeeping telemetry (temperatures, currents and voltages, etc.).
+The second (which is what I work on) is the Command and Data Handling (C&DH) FPGA. 
+This FPGA interface must process data as it arrives from the instrument, binning it into different energy channels and integrating it in time to reduce the overall data volume being sent to ground. 
 
-
-<div class="row">
+<div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/vhdl_sims.PNG' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/vhdl_sims.PNG' | relative_url }}" alt="" title="VHDL simulations"/>
     </div>
 </div>
 <div class="caption">
-    In this example,    I am testing the logic that handles defining energy bins for one of the BurstCube datastreams, and then reading them back to verify that they are correct. 
+    In this example, I am simulating the FPGA logic that handles defining energy bins for one of the BurstCube datastreams, and then reading them back to verify that they are correct. 
 
-    When the RAM write-enable goes high, some the RAM is loaded (near the yellow line). Then, at a later point (where the blue markers are) the RAM is read out and into an output register. 
+    When the RAM write-enable goes high, some the RAM is loaded (near the yellow line towards the top). Then, at a later point (where the blue markers are) the RAM is read out and into an output register. 
 </div>
  
 
